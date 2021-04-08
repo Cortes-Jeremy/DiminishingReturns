@@ -1,0 +1,28 @@
+TODO
+	- Remove that useless config folder/addon
+	- Version support: apply default db if new version
+	- Default profile: default and not current player
+	- For some reason the addon breaks when I add slash commands: add a /dr to go to the menu (the current /dimret doesn't work)
+	
+v1.1
+Lawz
+	- Better default config, since most users cba configuring it
+	- Removed colored border, instead made icon full size
+	- Other minor changes
+Vendethiel
+	- Player/party/friendly support
+
+
+--------------------
+v1.0-beta-12
+Adirelle:
+	- Added a /drsupport chat command to check the status of supported addons.
+	- Minor fix in spell list initialization.
+	- Be more perserving when trying to detect supported addon and frames.
+	- Updated to my latest localization system.
+	- Avoid spawning extra icon frames for nameplates.
+	- Some more debug.
+	- Minor activation code change.
+	- Localization updated.
+	- .pkgmeta updated.
+	- README updated.
