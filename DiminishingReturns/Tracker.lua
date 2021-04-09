@@ -40,7 +40,7 @@ do
 		ctrlroot = [[Interface\Icons\Spell_Frost_FrostNova]],
 		scatters = 19503, -- Scatter Shot
 		silence =  2139, -- Counterspell
-		sleep = 2637, -- Hibernate	
+		sleep = 2637, -- Hibernate
 	}
 	-- Update with class specific icons
 	local _, pClass = UnitClass('player')
@@ -64,10 +64,16 @@ do
 		ICONS.ctrlroot = 122 -- Frost Nova
 		ICONS.rndroot = 12494 -- Frostbite
 	elseif pClass == "ROGUE" then
-		ICONS.silence = 1330 -- Garrote	
+		ICONS.silence = 1330 -- Garrote
 		ICONS.fear = 2094 -- Blind
 		ICONS.ctrlstun = 408 -- Kidney Shot
 		ICONS.cheapshot = 1833 -- Cheap Shot
+	elseif pClass == "WARRIOR" then
+		ICONS.ctrlstun = 20252 -- Intercept
+		ICONS.fear = 5246 -- Intimidating shout
+		ICONS.disarm = 676 -- Disarm
+		ICONS.rndroot = 1715 -- Improved hamstring
+		ICONS.rndstun = 57823 -- Revenge stun
 	end
 end
 addon.ICONS = ICONS
@@ -153,7 +159,7 @@ local function RemoveAllDR(guid)
 	end
 end
 
-local function ParseCLEU(self, _, timestamp, event, _, srcName, srcFlags, guid, name, flags, spellId, spell)	
+local function ParseCLEU(self, _, timestamp, event, _, srcName, srcFlags, guid, name, flags, spellId, spell)
 	-- Always process UNIT_DIED if we have information about the unit
 	if event == 'UNIT_DIED' then
 		if runningDR[guid] then
