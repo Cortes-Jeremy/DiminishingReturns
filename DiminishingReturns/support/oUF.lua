@@ -35,6 +35,7 @@ function addon:DeclareOUF(parent, oUF)
 		player = defaults,
 		target = defaults,
 		focus = defaults,
+		party = defaults
 	}})
 
 	local getDatabaseFuncs = {}
@@ -42,7 +43,12 @@ function addon:DeclareOUF(parent, oUF)
 	-- Frame checking code
 	local function CheckFrame(frame)
 		local unit = frame.unit
-		if unit ~= 'target' and unit ~= 'focus' and unit ~= 'player' then return end
+		if not unit then return end
+		if string.find(unit, 'party') ~= nil then -- handle party1,2...
+			unit = 'party'
+		end
+		if unit ~= 'target' and unit ~= 'focus' and unit ~= 'player' and unit ~= 'party' then return end
+
 		local GetDatabase = getDatabaseFuncs[unit]
 		if not GetDatabase then
 			-- Avoid creating several time the same config
@@ -68,31 +74,36 @@ end
 --    that's the way the author was going to code it in a future version.
 for index = 1, GetNumAddOns() do
 	local global = GetAddOnMetadata(index, 'X-oUF')
+
 	if global then
 		local parent = GetAddOnInfo(index)
-    local callbackFrame
-    local i = 0
-    local function ClearFrame()
-      if callbackFrame then
-        callbackFrame:SetScript('OnUpdate', nil)
-      end
-    end
-    local function TryLoad()
+		local callbackFrame
+		local i = 0
+
+		local function ClearFrame()
+			if callbackFrame then
+				callbackFrame:SetScript('OnUpdate', nil)
+			end
+		end
+
+		local function TryLoad()
 			local oUF = _G[global]
 			if oUF then
 				addon:DeclareOUF(parent, oUF)
-        ClearFrame()
-      else
-        -- retry on every OnUpdate for 100 times
-        if i > 100 then
-          ClearFrame()
-        elseif callbackFrame == nil then
-          callbackFrame = CreateFrame('Frame')
-          callbackFrame:SetScript('OnUpdate', TryLoad)
-        end
-        i = i + 1
+				ClearFrame()
+			else
+				-- retry on every OnUpdate for 100 times
+				if i > 100 then
+					ClearFrame()
+				elseif callbackFrame == nil then
+					callbackFrame = CreateFrame('Frame')
+					callbackFrame:SetScript('OnUpdate', TryLoad)
+				end
+				i = i + 1
 			end
-    end
+		end
+
 		addon:RegisterAddonSupport(parent, TryLoad)
 	end
+
 end

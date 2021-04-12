@@ -36,7 +36,7 @@ addon:RegisterAddonSupport('FrameXMLParty', function()
 		return db.profile, db
 	end
 
-	addon:RegisterFrameConfig('Party', GetDatabase)
+	addon:RegisterFrameConfig('Blizzard: party', GetDatabase)
 
 	local function SetupFrame(frame)
 		return addon:SpawnFrame(frame, frame, GetDatabase)

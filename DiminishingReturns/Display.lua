@@ -3,8 +3,6 @@ if not addon then return end
 
 local LSM = LibStub("LibSharedMedia-3.0")
 
-local FONT_FLAGS = "OUTLINE" -- GameFontNormal:GetFont(), 16,
-
 local ANCHORING = {
 	LEFT   = { "RIGHT",  "LEFT",   -1,  0 },
 	RIGHT  = { "LEFT",   "RIGHT",   1,  0 },
