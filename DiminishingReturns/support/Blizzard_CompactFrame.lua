@@ -1,9 +1,9 @@
 local addon = DiminishingReturns
 if not addon then return end
 
-addon:RegisterAddonSupport('FrameXMLCompact', function()
+addon:RegisterAddonSupport('FrameXMLCompactFrames', function()
 
-	local db = addon.db:RegisterNamespace('Blizzard_CompactFrame', {profile={
+	local db = addon.db:RegisterNamespace('Blizzard_CompactFrames', {profile={
 		enabled = true,
 		iconSize = 20,
 		direction = 'RIGHT',
@@ -35,7 +35,7 @@ addon:RegisterAddonSupport('FrameXMLCompact', function()
 		return db.profile, db
 	end
 
-	addon:RegisterFrameConfig('Blizzard: CompactFrame', GetDatabase)
+	addon:RegisterFrameConfig('Blizzard: CompactFrames', GetDatabase)
 
 	local function SetupFrame(frame)
 		return addon:SpawnFrame(frame, frame, GetDatabase)
