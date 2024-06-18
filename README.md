@@ -4,7 +4,10 @@
 
 This is the enhanced version of **Diminishing Return** for World of Warcraft - Wrath of the Lich King (3.3.5a)
 
+Added support for Compact Raid Frame
+
 Added support for ElvUI Party frames
+
 Added more customization about timer precision and text placement, started from the one that Vendethiel enhanced
 
 

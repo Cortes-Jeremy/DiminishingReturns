@@ -32,6 +32,7 @@ support\ag_UnitFrames.lua
 support\Blizzard.lua
 support\Blizzard_ArenaUI.lua
 support\Blizzard_Party.lua
+support\Blizzard_CompactFrames.lua
 support\Gladius.lua
 support\oUF.lua
 support\Nameplates.lua
